@@ -16,6 +16,7 @@ import com.github.mikephil.charting.formatter.XAxisValueFormatter;
 import com.github.mikephil.charting.formatter.YAxisValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -202,7 +203,8 @@ public class LineChartManager2 {
         xAxis.setValueFormatter(new XAxisValueFormatter() {
             @Override
             public String getXValue(String s, int i, ViewPortHandler viewPortHandler) {
-                return String.valueOf(i);
+                DecimalFormat df = new DecimalFormat("#");
+                return df.format(i);
             }
         });
 
@@ -235,14 +237,16 @@ public class LineChartManager2 {
         axisLeft.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, YAxis yAxis) {
-                return String.valueOf(v);
+                DecimalFormat df = new DecimalFormat("#");
+                return df.format(v);
             }
         });
 
         axisRight.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, YAxis yAxis) {
-                return String.valueOf(v);
+                DecimalFormat df = new DecimalFormat("#");
+                return df.format(v);
             }
         });
 
