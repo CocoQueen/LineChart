@@ -1,10 +1,13 @@
 package com.example.wissdom.chartdemo2;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 
 /**
  *
@@ -46,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initChart1() {
         lineChart1 = findViewById(R.id.spread_line_chart);
-        //设置图表的描述
-
+        Drawable drawable = getResources().getDrawable(R.drawable.fade_blue);
+        setChartFillDrawable(lineChart1,drawable);
         lineChart1.setDescription("单曲线");
         lineChart1.setDoubleTapToZoomEnabled(false);
         //设置x轴的数据
@@ -64,5 +67,19 @@ public class MainActivity extends AppCompatActivity {
         //创建两条折线的图表
         lineData = LineChartManager2.initSingleLineChart(this, lineChart1, numX, datas1);
         LineChartManager2.initDataStyle(lineChart1, lineData, this);
+    }
+    /**
+     * 设置线条填充背景颜色
+     *
+     * @param drawable
+     */
+    public void setChartFillDrawable(LineChart lineChart,Drawable drawable) {
+        if (lineChart.getData() != null && lineChart.getData().getDataSetCount() > 0) {
+            LineDataSet lineDataSet = lineChart.getData().getDataSetByIndex(0);
+            //避免在 initLineDataSet()方法中 设置了 lineDataSet.setDrawFilled(false); 而无法实现效果
+            lineDataSet.setDrawFilled(true);
+//            lineDataSet.setFillDrawable(drawable);
+            lineChart.invalidate();
+        }
     }
 }
