@@ -145,8 +145,7 @@ public class LineChartManager2 {
         dataSets.add(dataSet1);
 
         //构建一个LineData  将dataSets放入
-        LineData lineData = new LineData(xValues, dataSets);
-        return lineData;
+        return new LineData(xValues, dataSets);
     }
 
     /**
