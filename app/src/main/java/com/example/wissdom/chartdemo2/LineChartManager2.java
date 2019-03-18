@@ -242,6 +242,7 @@ public class LineChartManager2 {
             }
         });
 
+        //"#"表示不带小数点，“#.00”小数点后两位
         axisRight.setValueFormatter(new YAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, YAxis yAxis) {
